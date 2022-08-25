@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+    />
+
+    <script>
+      dojoConfig = { parseOnLoad: false };
+    </script>
+    <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
+
+    <script>
+      require([
+        "dojo/_base/declare",
+        "dojo/parser",
+        "dojo/ready",
+        "dijit/_WidgetBase",
+        "dijit/_TemplatedMixin",
+      ], function (declare, parser, ready, _WidgetBase, _TemplatedMixin) {
+        declare("FancyCounter", [_WidgetBase, _TemplatedMixin], {
+          // counter
+          _i: 0,
+
+          templateString:
+            "<div>" +
+            "<button data-dojo-attach-event='onclick: increment'>press me</button>" +
+            "&nbsp; count: <span data-dojo-attach-point='counter'>0</span>" +
+            "</div>",
+
+          increment: function () {
+            this.counter.innerHTML = ++this._i;
+          },
+        });
+
+        ready(function () {
+          // Call the parser manually so it runs after our widget is defined, and page has finished loading
+          parser.parse();
+        });
+      });
+    </script>
+  </head>
+  <body class="claro">
+    <span data-dojo-type="FancyCounter">press me</span>
+  </body>
+</html>

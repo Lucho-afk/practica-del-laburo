@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+    />
+
+    <script>
+      dojoConfig = { parseOnLoad: true };
+    </script>
+    <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
+
+    <script>
+      // Dojo < 1.7
+      // load modules for widgets in HTML to parse
+      dojo.require("dojo.parser");
+      dojo.require("dijit.form.Button");
+
+      function setupHandlers() {
+        dojo.attr("testNodeTwo", "onmouseover", function (evt) {
+          dojo.attr("consoleOne", "innerHTML", "The mouse is over");
+        });
+
+        dojo.attr("testNodeTwo", "onclick", function (evt) {
+          dojo.attr("consoleOne", "innerHTML", "The mouse was clicked");
+        });
+      }
+    </script>
+  </head>
+  <body class="claro">
+    <button
+      data-dojo-type="dijit.form.Button"
+      id="buttonThree"
+      data-dojo-props="onClick:setupHandlers"
+    >
+      Setup handlers
+    </button>
+    <div id="testNodeTwo">Hi, try the events! Click me or hover me.</div>
+    <div id="consoleOne"></div>
+  </body>
+</html>

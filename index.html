@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+    />
+    <style type="text/css">
+      .businessCard {
+        border: 3px inset gray;
+        margin: 1em;
+      }
+      .employeeName {
+        color: blue;
+      }
+      .specialEmployeeName {
+        color: red;
+      }
+    </style>
+    <script>
+      dojoConfig = { parseOnLoad: false };
+    </script>
+    <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
+
+    <script>
+      require([
+        "dojo/_base/declare",
+        "dojo/parser",
+        "dojo/ready",
+        "dijit/_WidgetBase",
+        "dijit/_TemplatedMixin",
+      ], function (declare, parser, ready, _WidgetBase, _TemplatedMixin) {
+        declare("BusinessCard", [_WidgetBase, _TemplatedMixin], {
+          templateString:
+            "<div class='businessCard'>" +
+            "<div>Name: <span data-dojo-attach-point='nameNode'></span></div>" +
+            "<div>Phone #: <span data-dojo-attach-point='phoneNode'></span></div>" +
+            "</div>",
+
+          // Attributes
+          name: "unknown",
+          _setNameAttr: { node: "nameNode", type: "innerHTML" },
+
+          nameClass: "employeeName",
+          _setNameClassAttr: { node: "nameNode", type: "class" },
+
+          phone: "unknown",
+          _setPhoneAttr: { node: "phoneNode", type: "innerHTML" },
+        });
+
+        ready(function () {
+          // Call the parser manually so it runs after our widget is defined, and page has finished loading
+          parser.parse();
+        });
+      });
+    </script>
+  </head>
+  <body class="claro">
+    <span
+      data-dojo-type="BusinessCard"
+      data-dojo-props="name:'John Smith', phone:'(800) 555-1212'"
+    ></span>
+    <span
+      data-dojo-type="BusinessCard"
+      data-dojo-props="name:'Jack Bauer', nameClass:'specialEmployeeName', phone:'(800) CALL-CTU'"
+    ></span>
+  </body>
+</html>

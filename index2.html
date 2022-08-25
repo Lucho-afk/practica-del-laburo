@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="dojo-release-1.17.3/dijit/themes/claro/claro.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script>
+      dojoConfig = { async: true };
+    </script>
+    <script src="jquery.js"></script>
+    <script>
+      $(function () {
+        $("#includedContent").load("usuarios.html");
+      });
+    </script>
+    <script></script>
+    <!--referencia a al js de usuarios-->
+
+    <script src="dojo-release-1.17.3/dojo/dojo.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./js/index2.js"></script>
+    <script src="./js/index.js"></script>
+    <title>Prueba-lucho</title>
+  </head>
+  <body id="contenido" onload="menu();getData(); " class="claro">
+    <ul id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About us</a></li>
+    </ul>
+    <button type="button" id="setContent">grilla 2</button>
+    <button type="button" id="setContent2">grilla 1</button>
+    <!--referencia a al html de usuarios-->
+    <div id="usuarios" html-file="views/usuarios.html"></div>
+    <div id="prductos" html-file="views/productos.html"></div>
+    <div id=""></div>
+    <div id="includedContent"></div>
+  </body>
+  <script src="./views/usuarios.js"></script>
+</html>
